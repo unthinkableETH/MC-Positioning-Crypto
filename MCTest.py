@@ -21,7 +21,7 @@ if d1!=None and d2!=None:
         df2=pd.read_parquet(s3_2)
         df3=pd.merge(df1, df2, on='symbol')
         df3["Difference"]=(df3['Rank_x'])-(df3['Rank_y'])
-        df3.sort_values(by=['Rank_y'],ascending=False)
+        df3.sort_values('Rank_y')
         df3=df3.drop(['display_symbol_x','aliases_x','shortname_x','last_price_usd_x','volume_24_usd_x','market_cap_usd_x','Rank_x','display_symbol_y'], axis=1)
         df3=df3.drop(['name_x','aliases_y','shortname_y','last_price_usd_y','volume_24_usd_y','market_cap_usd_y'], axis=1)
         st.dataframe(df3,hide_index=True)
