@@ -24,5 +24,8 @@ if d1!=None and d2!=None:
         df3=df3.drop(['display_symbol_x','aliases_x','shortname_x','last_price_usd_x','volume_24_usd_x','market_cap_usd_x','Rank_y','display_symbol_y'], axis=1)
         df3=df3.drop(['name_y','aliases_y','shortname_y','last_price_usd_y','volume_24_usd_y','market_cap_usd_y'], axis=1)
         st.dataframe(df3,hide_index=True)
-    except FileNotFoundError or OSError:
+    except FileNotFoundError:
         st.header(' Error. Reminder only the first of each month can be selected. Please select a different date.')
+    except OSError:
+        st.header(' Error. Reminder only the first of each month can be selected. Please select a different date.')
+        
